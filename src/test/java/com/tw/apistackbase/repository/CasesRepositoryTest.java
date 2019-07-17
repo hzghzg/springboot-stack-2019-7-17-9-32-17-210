@@ -29,4 +29,18 @@ public class CasesRepositoryTest {
             }
         });
     }
+    @Test
+    public void shoule_throw_exception_when_save_given_null_casename(){
+        //given
+        LawCases lawCase1=new LawCases();
+        lawCase1.setCaseHappenTime(123456);
+        //when
+        //then
+        Assertions.assertThrows(Exception.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                casesRepository.saveAndFlush(lawCase1);
+            }
+        });
+    }
 }
