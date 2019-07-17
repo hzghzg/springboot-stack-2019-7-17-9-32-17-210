@@ -16,7 +16,7 @@ public class CasesRepositoryTest {
     private CasesRepository casesRepository;
 //AC1
     @Test
-    public void shoule_throw_exception_when_save_given_null_case_name(){
+    public void shoule_throw_exception_when_save_given_null_casehappentime(){
         //given
         LawCases lawCase1=new LawCases();
         lawCase1.setCasename("case1");
