@@ -121,6 +121,36 @@ public class CasesRepositoryTest {
         Assertions.assertEquals(lawCase2.getCaseHappenTime(),caseList.get(0).getCaseHappenTime());
 
     }
+    @Test
+    public void should_return_allcases_when_find_given_name(){
+
+        //given
+        LawCases lawCase1=new LawCases();
+        lawCase1.setCasename("case2");
+        lawCase1.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase1);
+        LawCases lawCase2=new LawCases();
+        lawCase2.setCasename("case2");
+        lawCase2.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase2);
+        LawCases lawCase3=new LawCases();
+        lawCase3.setCasename("case3");
+        lawCase3.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase3);
+
+        //when
+        List<LawCases> caseList=casesRepository.findAll();
+        caseList.stream().filter(item->item.getCasename()=="case2");
+
+        //then
+        Assertions.assertEquals(lawCase1.getId(),caseList.get(0).getId());
+        Assertions.assertEquals(lawCase1.getCasename(),caseList.get(0).getCasename());
+        Assertions.assertEquals(lawCase1.getCaseHappenTime(),caseList.get(0).getCaseHappenTime());
+        Assertions.assertEquals(lawCase2.getId(),caseList.get(1).getId());
+        Assertions.assertEquals(lawCase2.getCasename(),caseList.get(1).getCasename());
+        Assertions.assertEquals(lawCase2.getCaseHappenTime(),caseList.get(1).getCaseHappenTime());
+
+    }
 
 
 
