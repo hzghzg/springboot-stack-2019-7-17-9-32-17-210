@@ -3,15 +3,19 @@ package com.tw.apistackbase.repository;
 import com.tw.apistackbase.entity.LawCases;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 
 @RunWith(SpringRunner.class)
@@ -20,6 +24,10 @@ import java.util.logging.Level;
 public class CasesRepositoryTest {
     @Autowired
     private CasesRepository casesRepository;
+    @BeforeEach
+    public void deleteall(){
+        casesRepository.deleteAll();
+    }
 //AC1
     @Test
     public void should_throw_exception_when_save_given_null_casehappentime(){
@@ -66,5 +74,54 @@ public class CasesRepositoryTest {
         Assertions.assertEquals(1, lawCases.size());
         Assertions.assertEquals("case1",lawCases.get(0).getCasename());
     }
+    //AC2
+    @Test
+    public void should_return_allcontent_when_find_given_id(){
+
+        //given
+        LawCases lawCase1=new LawCases();
+        lawCase1.setCasename("case1");
+        lawCase1.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase1);
+        Long id=casesRepository.findAll().get(0).getId();
+
+        //when
+        LawCases lawCase=casesRepository.findById(id).get();
+
+        //then
+        Assertions.assertEquals(id,lawCase.getId());
+        Assertions.assertEquals("case1",lawCase.getCasename());
+        Assertions.assertEquals(casesRepository.findAll().get(0).getCaseHappenTime(),lawCase.getCaseHappenTime());
+
+    }
+
+    @Test
+    public void should_return_allcontent_orderby_casehappentime_when_find_given_id(){
+
+        //given
+        LawCases lawCase1=new LawCases();
+        lawCase1.setCasename("case"+ UUID.randomUUID().toString());
+        lawCase1.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase1);
+        System.out.println(lawCase1.getId());
+        LawCases lawCase2=new LawCases();
+        lawCase2.setCasename("case"+ UUID.randomUUID().toString());
+        lawCase2.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase2);
+        System.out.println(lawCase2.getId());
+        //Long id=casesRepository.findAll().get(0).getId();
+
+        //when
+        //LawCases lawCase=casesRepository.findById(id).get();
+        List<LawCases> caseList=casesRepository.findAll(Sort.by("caseHappenTime").descending());
+
+        //then
+        Assertions.assertEquals(lawCase2.getId(),caseList.get(0).getId());
+        Assertions.assertEquals(lawCase2.getCasename(),caseList.get(0).getCasename());
+        Assertions.assertEquals(lawCase2.getCaseHappenTime(),caseList.get(0).getCaseHappenTime());
+
+    }
+
+
 
 }
