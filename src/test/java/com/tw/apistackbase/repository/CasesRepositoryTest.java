@@ -152,6 +152,30 @@ public class CasesRepositoryTest {
 
     }
 
+    @Test
+    public void should_return_true_size_when_delete_given_id(){
+
+        //given
+        LawCases lawCase1=new LawCases();
+        lawCase1.setCasename("case2");
+        lawCase1.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase1);
+        LawCases lawCase2=new LawCases();
+        lawCase2.setCasename("case2");
+        lawCase2.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase2);
+        LawCases lawCase3=new LawCases();
+        lawCase3.setCasename("case3");
+        lawCase3.setCaseHappenTime(new Date().getTime());
+        casesRepository.save(lawCase3);
+
+        //when
+        casesRepository.deleteById(lawCase1.getId());
+
+        //then
+        Assertions.assertEquals(2,casesRepository.findAll().size());
+    }
+
 
 
 }
