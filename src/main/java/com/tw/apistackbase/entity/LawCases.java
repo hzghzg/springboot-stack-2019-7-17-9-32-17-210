@@ -1,21 +1,22 @@
 package com.tw.apistackbase.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class LawCases {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column(nullable = false)
     private String casename;
     @Column(nullable = false)
-    private long caseHappenTime;
+    private Long caseHappenTime;
 
     public LawCases() {
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -23,11 +24,11 @@ public class LawCases {
         this.casename = casename;
     }
 
-    public void setCaseHappenTime(long caseHappenTime) {
+    public void setCaseHappenTime(Long caseHappenTime) {
         this.caseHappenTime = caseHappenTime;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -35,7 +36,7 @@ public class LawCases {
         return casename;
     }
 
-    public long getCaseHappenTime() {
+    public Long getCaseHappenTime() {
         return caseHappenTime;
     }
 
