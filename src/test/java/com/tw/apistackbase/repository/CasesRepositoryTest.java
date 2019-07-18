@@ -94,7 +94,7 @@ public class CasesRepositoryTest {
         Assertions.assertEquals(casesRepository.findAll().get(0).getCaseHappenTime(),lawCase.getCaseHappenTime());
 
     }
-
+//AC3
     @Test
     public void should_return_allcontent_orderby_casehappentime_when_find_given_id(){
 
@@ -121,6 +121,7 @@ public class CasesRepositoryTest {
         Assertions.assertEquals(lawCase2.getCaseHappenTime(),caseList.get(0).getCaseHappenTime());
 
     }
+    //AC4
     @Test
     public void should_return_allcases_when_find_given_name(){
 
@@ -151,7 +152,7 @@ public class CasesRepositoryTest {
         Assertions.assertEquals(lawCase2.getCaseHappenTime(),caseList.get(1).getCaseHappenTime());
 
     }
-
+//AC5
     @Test
     public void should_return_true_size_when_delete_given_id(){
 
@@ -175,6 +176,9 @@ public class CasesRepositoryTest {
         //then
         Assertions.assertEquals(2,casesRepository.findAll().size());
     }
+
+
+    //Story2
 
 
 

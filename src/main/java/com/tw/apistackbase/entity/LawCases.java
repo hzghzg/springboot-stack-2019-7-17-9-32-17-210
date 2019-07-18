@@ -12,8 +12,18 @@ public class LawCases {
     private String casename;
     @Column(nullable = false)
     private Long caseHappenTime;
+    @OneToOne
+    private CaseSpecificInformation caseSpecificInformation;
 
     public LawCases() {
+    }
+
+    public void setCaseSpecificInformation(CaseSpecificInformation caseSpecificInformation) {
+        this.caseSpecificInformation = caseSpecificInformation;
+    }
+
+    public CaseSpecificInformation getCaseSpecificInformation() {
+        return caseSpecificInformation;
     }
 
     public void setId(Long id) {
