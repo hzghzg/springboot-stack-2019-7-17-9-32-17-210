@@ -1,6 +1,8 @@
 package com.tw.apistackbase.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Procuratorate {
@@ -9,8 +11,18 @@ public class Procuratorate {
     private Long id;
     @Column(nullable = false,unique = false)
     private String name;
+    @OneToMany
+    private List<Procurator> procuratorsList=new ArrayList<>();
 
     public Procuratorate() {
+    }
+
+    public void setProcuratorsList(List<Procurator> procuratorsList) {
+        this.procuratorsList = procuratorsList;
+    }
+
+    public List<Procurator> getProcuratorsList() {
+        return procuratorsList;
     }
 
     public void setId(Long id) {
