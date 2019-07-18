@@ -14,8 +14,18 @@ public class LawCases {
     private Long caseHappenTime;
     @OneToOne
     private CaseSpecificInformation caseSpecificInformation;
+    @OneToOne
+    private Procuratorate procuratorate;
 
     public LawCases() {
+    }
+
+    public void setProcuratorate(Procuratorate procuratorate) {
+        this.procuratorate = procuratorate;
+    }
+
+    public Procuratorate getProcuratorate() {
+        return procuratorate;
     }
 
     public void setCaseSpecificInformation(CaseSpecificInformation caseSpecificInformation) {
