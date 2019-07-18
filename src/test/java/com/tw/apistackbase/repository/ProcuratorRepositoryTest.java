@@ -53,6 +53,7 @@ public class ProcuratorRepositoryTest {
         Procuratorate procuratorate=new Procuratorate();
         procuratorate.setName("procuratorate");
         procuratorate.setProcuratorsList(procuratorsList);
+        procuratorateRepository.save(procuratorate);
         Long id=procuratorate.getId();
 
         //when

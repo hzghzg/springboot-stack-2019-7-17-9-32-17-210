@@ -11,7 +11,7 @@ public class Procuratorate {
     private Long id;
     @Column(nullable = false,unique = false)
     private String name;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Procurator> procuratorsList=new ArrayList<>();
 
     public Procuratorate() {
