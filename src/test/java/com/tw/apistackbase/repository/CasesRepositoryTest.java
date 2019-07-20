@@ -21,6 +21,7 @@ import java.util.logging.Level;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//Story1
 public class CasesRepositoryTest {
     @Autowired
     private CasesRepository casesRepository;
@@ -94,7 +95,7 @@ public class CasesRepositoryTest {
         Assertions.assertEquals(casesRepository.findAll().get(0).getCaseHappenTime(),lawCase.getCaseHappenTime());
 
     }
-//AC3
+    //AC3
     @Test
     public void should_return_allcontent_orderby_casehappentime_when_find_given_id(){
 
@@ -178,7 +179,7 @@ public class CasesRepositoryTest {
     }
 
 
-    //Story2
+
 
 
 

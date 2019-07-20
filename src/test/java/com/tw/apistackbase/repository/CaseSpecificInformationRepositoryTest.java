@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//Story2
 public class CaseSpecificInformationRepositoryTest {
     @Autowired
     private CaseSpecificInformationRepository caseSpecificInformationRepository;
@@ -28,7 +29,7 @@ public class CaseSpecificInformationRepositoryTest {
     public void deleteAll(){
         caseSpecificInformationRepository.deleteAll();
     }
-
+//AC1
     @Test
     public void should_return_detial_imformation_when_find_given_not_null_important_document() {
         //given
@@ -43,7 +44,7 @@ public class CaseSpecificInformationRepositoryTest {
         Assertions.assertEquals(caseSpecificInformation.getObjectiveAspectDescription(),caseSpecificInformationsList.get(0).getObjectiveAspectDescription());
         Assertions.assertEquals(caseSpecificInformation.getSubjectiveAspectDescription(),caseSpecificInformationsList.get(0).getSubjectiveAspectDescription());
     }
-
+//Ac2
     @Test
     public void should_return_detial_imformation_when_search_given_id() {
         //given
@@ -61,7 +62,7 @@ public class CaseSpecificInformationRepositoryTest {
         Assertions.assertEquals(caseSpecificInformation.getSubjectiveAspectDescription(),caseSpecificInformationsList.get(0).getSubjectiveAspectDescription());
     }
 
-
+//Ac3
     @Test
     public void should_return_true_imformation_when_search_given_case_id() {
         //given
@@ -75,7 +76,7 @@ public class CaseSpecificInformationRepositoryTest {
         lawCases.setCaseSpecificInformation(caseSpecificInformation);
         casesRepository.save(lawCases);
         Long id=lawCases.getId();
-
+//Ac4
         //when
         List<LawCases> lawCasesList=casesRepository.findAll();
         lawCasesList.stream().filter(item->item.getId()==id);

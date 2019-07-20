@@ -17,12 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//Story3.2
 public class ProcuratorRepositoryTest {
     @Autowired
     private ProcuratorRepository procuratorRepository;
     @Autowired
     private ProcuratorateRepository procuratorateRepository;
-
+//Ac2
     @Test
     public void should_return_true_imformation_when_search_given__procurator_id() {
         //given
@@ -37,7 +38,7 @@ public class ProcuratorRepositoryTest {
         Assertions.assertEquals(procurator.getName(),procurator1.getName());
 
     }
-
+//Ac3
     @Test
     public void should_return_true_imformation_when_search_given__procuratorate_id() {
         //given
