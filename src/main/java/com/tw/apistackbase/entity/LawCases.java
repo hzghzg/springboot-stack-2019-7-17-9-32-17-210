@@ -14,7 +14,7 @@ public class LawCases {
     private Long caseHappenTime;
     @OneToOne(cascade = CascadeType.ALL)
     private CaseSpecificInformation caseSpecificInformation;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Procuratorate procuratorate;
 
     public LawCases() {
