@@ -89,6 +89,28 @@ public class CaseSpecificInformationRepositoryTest {
         Assertions.assertEquals(caseSpecificInformation.getSubjectiveAspectDescription(),lawCases1.getCaseSpecificInformation().getSubjectiveAspectDescription());
     }
 
+    @Test
+    public void should_return_true_detail_imformation_when_search_given_case_id() {
+        //given
+        CaseSpecificInformation caseSpecificInformation=new CaseSpecificInformation();
+        caseSpecificInformation.setObjectiveAspectDescription("XXXXXXXXXXXXXXXXXXXXXXXXXX");
+        caseSpecificInformation.setSubjectiveAspectDescription("XXXXXXX");
+        caseSpecificInformationRepository.save(caseSpecificInformation);
+        LawCases lawCases=new LawCases();
+        lawCases.setCasename("case1");
+        lawCases.setCaseHappenTime(new Date().getTime());
+        lawCases.setCaseSpecificInformation(caseSpecificInformation);
+        casesRepository.save(lawCases);
+        Long id=lawCases.getId();
+
+        //when
+        LawCases lawCases1=casesRepository.findById(id).get();
+        //then
+        assertEquals(caseSpecificInformation,lawCases1.getCaseSpecificInformation());
+
+    }
+
+
 
 
 }

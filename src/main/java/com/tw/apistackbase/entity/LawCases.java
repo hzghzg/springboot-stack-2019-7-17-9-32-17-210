@@ -12,7 +12,7 @@ public class LawCases {
     private String casename;
     @Column(nullable = false)
     private Long caseHappenTime;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private CaseSpecificInformation caseSpecificInformation;
     @OneToOne
     private Procuratorate procuratorate;
